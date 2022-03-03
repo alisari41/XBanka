@@ -9,6 +9,7 @@ namespace Entities.Concrete
 {
    public class Musteri : IEntity
     {
+        public int Id { get; set; }
         public string MusteriNo { get; set; }
         public int  KanalId { get; set; }
     }

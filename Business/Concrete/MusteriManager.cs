@@ -24,6 +24,7 @@ namespace Business.Concrete
     public class MusteriManager : IMusteriService
     {
         private IMusteriDal _musteriDal;
+        private IKanalService _kanalService;
 
         public MusteriManager(IMusteriDal musteriDal)
         {
@@ -95,7 +96,7 @@ namespace Business.Concrete
             var result = _musteriDal.GetList(p => p.MusteriNo == musteriNo).Any();
             if (result)
             {//Eğer girilen ürün adı sistemde varsa
-                return new ErrorResult(Messages.ProductNameAlreadyExists);
+                return new ErrorResult(Messages.MusteriNameAlreadyExists);
             }
 
             return new SuccessResult();//Boş bir successResult dönerse sorun yok Diğer metodda okumak için 
@@ -104,10 +105,10 @@ namespace Business.Concrete
 
         private IResult CheckIfKanalIsEnabled()
         {//Kanallar ile iş yapmayı göstermek için uyduruyorum Farklı servisleri kullanmayı göstermek için Mesajlar ve kurulan sistem değişebilir
-            var result = _categorySevice.GetList();
+            var result = _kanalService.GetList();
             if (result.Data.Count <= 10)
             {
-                return new ErrorResult(Messages.ProductNameAlreadyExists);
+                return new ErrorResult(Messages.MusteriNameAlreadyExists);
             }
             return new SuccessResult();
         }

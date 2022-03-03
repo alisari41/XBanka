@@ -9,6 +9,7 @@ namespace Entities.Concrete
 {
     public class Kanal : IEntity
     {
+        public int  Id { get; set; }
         public string Ad { get; set; }
     }
 }

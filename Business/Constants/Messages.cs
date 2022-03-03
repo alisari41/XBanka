@@ -12,9 +12,12 @@ namespace Business.Constants
 
 
         public static string MusteriAdded = "Müşteri başarıyla eklendi.";
-        public static string MusteriUpdated = "Müşteri bilgileri başarıyla güncelleştirildi.";
         public static string MusteriDeleted = "Müşteri bilgileri başarıyla silindi.";
-        
+        public static string MusteriUpdated = "Müşteri bilgileri başarıyla güncelleştirildi.";
+
+        public static string KanalAdded = "Kanal başarıyla eklendi.";
+        public static string KanalDeleted = "Kanal bilgileri başarıyla silindi.";
+        public static string KanalUpdated = "Kanal bilgileri başarıyla güncelleştirildi.";
 
 
         public static string UserNotFound = "Kullanıcı bulunamadı.";
@@ -26,6 +29,8 @@ namespace Business.Constants
 
 
         public static string AuthorizationDenied = "Yetkiniz yok.";
-        public static string ProductNameAlreadyExists = "Müşteri numarası zaten mevcut.";
+        public static string MusteriNameAlreadyExists = "Müşteri numarası zaten mevcut.";
+        public static string KanalNameAlreadyExists = "Kanal adı zaten mevcut.";
+
     }
 }

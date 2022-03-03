@@ -7,7 +7,7 @@ using Core.Entities;
 
 namespace Entities.Concrete
 {
-    class Musteri : IEntity
+   public class Musteri : IEntity
     {
         public string MusteriNo { get; set; }
         public int  KanalId { get; set; }

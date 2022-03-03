@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Autofac;
+﻿using Autofac;
 using Autofac.Extras.DynamicProxy;
 using Business.Abstract;
 using Business.Concrete;
@@ -19,10 +14,13 @@ namespace Business.DependencyResolves.Autofac
     {
         protected override void Load(ContainerBuilder builder)
         {
-            
+
             builder.RegisterType<MusteriManager>().As<IMusteriService>();//Eğer birisi constructer'ında(yapıcı metod) IMusteriService isterse ona MusteriManager vericez
             builder.RegisterType<EfMusteriDal>().As<IMusteriDal>();
 
+
+            builder.RegisterType<KanalManager>().As<IKanalService>();
+            builder.RegisterType<EfMusteriDal>().As<IKanalDal>();
 
 
 

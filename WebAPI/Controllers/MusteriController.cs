@@ -16,12 +16,12 @@ namespace WebAPI.Controllers
     public class MusteriController : ControllerBase
     {
         private IMusteriService _musteriService;
-        private CalismaDurumlari _calismaDurumlari;//Bütün durumları tek bir yerde kullanmak için Her metod içerisinde yapmak yerine tek bir yerde tanımladım
-        public MusteriController(IMusteriService musteriService, CalismaDurumlari calismaDurumlari)
+        private CalismaDurumlari _calismaDurumlari=new CalismaDurumlari();//Bütün durumları tek bir yerde kullanmak için Her metod içerisinde yapmak yerine tek bir yerde tanımladım
+        public MusteriController(IMusteriService musteriService)
         {
             _musteriService = musteriService;
-            _calismaDurumlari = calismaDurumlari;
         }
+
 
         [HttpGet("getall")]
         public IActionResult GetList()

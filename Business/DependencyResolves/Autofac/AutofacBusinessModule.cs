@@ -20,7 +20,7 @@ namespace Business.DependencyResolves.Autofac
 
 
             builder.RegisterType<KanalManager>().As<IKanalService>();
-            builder.RegisterType<EfMusteriDal>().As<IKanalDal>();
+            builder.RegisterType<EfKanalDal>().As<IKanalDal>();
 
 
 

@@ -48,7 +48,7 @@ namespace WebAPI.Controllers
                 return BadRequest(userExits.Message);
             }
 
-            var registerResult = _authService.Register(userForRegisterDto, userForRegisterDto.Email);// Kullanıcıyı kayıt ettik
+            var registerResult = _authService.Register(userForRegisterDto, userForRegisterDto.Password);// Kullanıcıyı kayıt ettik
             var result = _authService.CreateAccessToken(registerResult.Data);
             if (result.Success)
             {

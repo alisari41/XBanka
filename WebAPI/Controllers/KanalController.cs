@@ -39,11 +39,10 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getmusterikanallist")]
-        public IActionResult GetMusteriKanalList(Kanal kanal)
+        public List<Kanal> GetMusteriKanalList(Kanal kanal)
         {
             var result = _kanalService.GetMusteriKanalList(kanal);
-
-            return (IActionResult)result.ToList();
+            return result;
         }
 
 

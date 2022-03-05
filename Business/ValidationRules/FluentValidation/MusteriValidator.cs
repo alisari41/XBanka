@@ -22,7 +22,7 @@ namespace Business.ValidationRules.FluentValidation
         }
 
         private bool StartWithWith(string arg)
-        {//Musterilerin Musteri numaraları bunlara göre başlamalı
+        {//Musterilerin Musteri numaraları bunlara göre başlamalı. GerçekMüşteriler "G" TüzelMüşteriler "T" Sertifakalar "S"
             return arg.StartsWith("G") || arg.StartsWith("T")||arg.StartsWith("S");
         }
     }

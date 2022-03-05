@@ -22,6 +22,8 @@ namespace Business.DependencyResolves.Autofac
             builder.RegisterType<KanalManager>().As<IKanalService>();
             builder.RegisterType<EfKanalDal>().As<IKanalDal>();
 
+            builder.RegisterType<AdresManager>().As<IAdresService>();
+            builder.RegisterType<EfAdresDal>().As<IAdresDal>();
 
 
 

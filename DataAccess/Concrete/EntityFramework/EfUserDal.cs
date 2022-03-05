@@ -19,8 +19,8 @@ namespace DataAccess.Concrete.EntityFramework
             using (var context = new BankaContext())
             {//Gelen User bilgilerinin join işlemleri ile rollerini listeledim
                 var result = from operationClaim in context.OperationClaims
-                             join userOperationClaim in context.UserOperationClaims on operationClaim.Id equals
-                                 userOperationClaim.OperationClaimId
+                             join userOperationClaim in context.UserOperationClaims
+                                 on operationClaim.Id equals userOperationClaim.OperationClaimId
                              where userOperationClaim.UserId == user.Id //sınırlandırma yapıldı
                              select new OperationClaim
                              {

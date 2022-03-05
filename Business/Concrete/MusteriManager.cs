@@ -26,10 +26,11 @@ namespace Business.Concrete
         private IMusteriDal _musteriDal;
         private IKanalService _kanalService;
 
-        public MusteriManager(IMusteriDal musteriDal)
+        public MusteriManager(IMusteriDal musteriDal, IKanalService kanalService)
         {
             //Yarın öbür gün başka bir ORM aracı implement ediyorsa onu kullanabilirim
             _musteriDal = musteriDal;
+            _kanalService = kanalService;
         }
 
 
@@ -106,7 +107,7 @@ namespace Business.Concrete
         private IResult CheckIfKanalIsEnabled()
         {//Kanallar ile iş yapmayı göstermek için uyduruyorum Farklı servisleri kullanmayı göstermek için Mesajlar ve kurulan sistem değişebilir
             var result = _kanalService.GetList();
-            if (result.Data.Count <= 10)
+            if (result.Data.Count <= 1)
             {
                 return new ErrorResult(Messages.MusteriNameAlreadyExists);
             }

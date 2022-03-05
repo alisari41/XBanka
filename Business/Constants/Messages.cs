@@ -19,6 +19,9 @@ namespace Business.Constants
         public static string KanalDeleted = "Kanal bilgileri başarıyla silindi.";
         public static string KanalUpdated = "Kanal bilgileri başarıyla güncelleştirildi.";
 
+        public static string AdresAdded = "Adres başarıyla eklendi.";
+        public static string AdresDeleted = "Adres bilgileri başarıyla silindi.";
+        public static string AdresUpdated = "Adres bilgileri başarıyla güncelleştirildi.";
 
         public static string UserNotFound = "Kullanıcı bulunamadı.";
         public static string PasswordError = "Şifre Hatalı.";
@@ -31,6 +34,7 @@ namespace Business.Constants
         public static string AuthorizationDenied = "Yetkiniz yok.";
         public static string MusteriNameAlreadyExists = "Müşteri numarası zaten mevcut.";
         public static string KanalNameAlreadyExists = "Kanal adı zaten mevcut.";
+
 
     }
 }

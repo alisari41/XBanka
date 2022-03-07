@@ -35,6 +35,8 @@ namespace Business.DependencyResolves.Autofac
             builder.RegisterType<TicariFaliyetManager>().As<ITicariFaliyetService>();
             builder.RegisterType<DapperTicariFaliyetDal>().As<ITicariFaleyetDal>();
 
+            builder.RegisterType<SendikaManager>().As<ISendikaService>();
+            builder.RegisterType<EfSendikaDal>().As<ISendikaDal>();
 
 
 

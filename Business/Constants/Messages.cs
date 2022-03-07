@@ -35,6 +35,10 @@ namespace Business.Constants
         public static string TicariFaaliyetDeleted = "Ticari Faaliyet bilgileri başarıyla silindi.";
         public static string TicariFaaliyetUpdated = "Ticari Faaliyet bilgileri başarıyla güncelleştirildi.";
 
+        public static string SendikaAdded = "Sendika Müşterisi başarıyla eklendi.";
+        public static string SendikaDeleted = "Sendika Müşteri bilgileri başarıyla silindi.";
+        public static string SendikaUpdated = "Sendika Müşteri bilgileri başarıyla güncelleştirildi.";
+
 
 
         public static string UserNotFound = "Kullanıcı bulunamadı.";
@@ -51,5 +55,6 @@ namespace Business.Constants
         public static string TuzelMusteriNameAlreadyExists = "Tüzel Müşteri zaten mevcut.";
         public static string GercekMusteriNameAlreadyExists = "Gerçek Müşteri zaten mevcut.";
         public static string TicariFaaliyetNameAlreadyExists = "Gerçek Müşterinin Ticari Faaliyeti zaten mevcut.";
+        public static string SendikaIdAlreadyExists = "Sendida Müşterisi zaten mevcut.";
     }
 }

@@ -19,6 +19,7 @@ namespace DataAccess.Concrete.EntityFramework.Contexts
         public DbSet<Musteri> Musteriler { get; set; }
         public DbSet<Kanal> Kanallar{ get; set; }
         public DbSet<Adres> Adresler{ get; set; }
+        public DbSet<Sendika> Sendikalar{ get; set; }
 
 
         public DbSet<OperationClaim> OperationClaims { get; set; }

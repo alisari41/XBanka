@@ -40,9 +40,9 @@ namespace Business.Concrete
         }
 
 
-        //[SecuredOperation("Admin")]
-        //[CacheRemoveAspect("ITicariFaliyetService.Get")]
-        //[ValidationAspect(typeof(TicariFaliyetValidator), Priority = 1)]
+        [SecuredOperation("Admin")]
+        [CacheRemoveAspect("ITicariFaliyetService.Get")]
+        [ValidationAspect(typeof(TicariFaliyetValidator), Priority = 1)]
         public IResult Add(TicariFaaliyetler ticariFaliyet)
         {
             IResult result = BusinessRules.Run(CheckIfTicariFaaliyetNoExists(ticariFaliyet.GercekMusteriId));

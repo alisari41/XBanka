@@ -23,6 +23,12 @@ namespace Business.Constants
         public static string AdresDeleted = "Adres bilgileri başarıyla silindi.";
         public static string AdresUpdated = "Adres bilgileri başarıyla güncelleştirildi.";
 
+        public static string TuzelMusteriAdded = "Tüzel Müşteri başarıyla eklendi.";
+        public static string TuzelMusteriDeleted = "Tüzel Müşteri bilgileri başarıyla silindi.";
+        public static string TuzelMusteriUpdated = "Tüzel Müşteri bilgileri başarıyla güncelleştirildi.";
+
+
+
         public static string UserNotFound = "Kullanıcı bulunamadı.";
         public static string PasswordError = "Şifre Hatalı.";
         public static string SuccessfulLogin = "Sisteme Giriş başarılı.";

@@ -40,6 +40,12 @@ namespace Core.DataAccess.EntityFramework
                 return context.Set<TEntity>().SingleOrDefault(filter);//verdiğimiz filter'a göre o data'nın gelmesini sağlıyorum
             }
         }
+
+        public TEntity Get(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public IList<TEntity> GetList(Expression<Func<TEntity, bool>> filter = null)
         {
             using (var context = new TContext())

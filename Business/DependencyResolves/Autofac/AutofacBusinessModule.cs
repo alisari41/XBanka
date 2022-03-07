@@ -6,6 +6,7 @@ using Castle.DynamicProxy;
 using Core.Utilities.Interceptors;
 using Core.Utilities.Security.Jwt;
 using DataAccess.Abstract;
+using DataAccess.Concrete.Dapper;
 using DataAccess.Concrete.EntityFramework;
 
 namespace Business.DependencyResolves.Autofac
@@ -24,6 +25,9 @@ namespace Business.DependencyResolves.Autofac
 
             builder.RegisterType<AdresManager>().As<IAdresService>();
             builder.RegisterType<EfAdresDal>().As<IAdresDal>();
+
+            builder.RegisterType<TuzelMusteriManager>().As<ITuzelMusteriService>();
+            builder.RegisterType<DapperTuzelMusteriDal>().As<ITuzelMusteriDal>();
 
 
 

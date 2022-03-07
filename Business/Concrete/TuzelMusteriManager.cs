@@ -37,6 +37,7 @@ namespace Business.Concrete
         }
 
 
+        [CacheAspect(100)]
         [PerformanceAspect(5)]
         public IDataResult<List<TuzelMusteriler>> GetList()
         {
@@ -44,35 +45,35 @@ namespace Business.Concrete
         }
 
 
-        [SecuredOperation("Admin")]
+        //[SecuredOperation("Admin")]
         [CacheRemoveAspect("ITuzelMusteriService.Get")]//Yeni müşteri eklediği zaman Ön belleği temizleme işlemi. İçersinde IMusteriService.Get olanları Yani başı Get ile başlayanları temizler
         [ValidationAspect(typeof(TuzelMusteriValidator), Priority = 1)]
-        public IResult Add(TuzelMusteriler tuzelMusteri)
+        public IResult AddRange(TuzelMusteriler tuzelMusteri)
         {
-            IResult result = BusinessRules.Run(CheckIfTuzelMusteriNoExists(tuzelMusteri.VergiNo));
+            IResult result = BusinessRules.Run(CheckIfTuzelMusteriNoExists(tuzelMusteri.Id, tuzelMusteri.VergiNo));
 
-            if (result!=null)
+            if (result != null)
             {
                 return result;
             }
 
-            _tuzelMusteriDal.Add(tuzelMusteri);
+            _tuzelMusteriDal.AddRange(tuzelMusteri);//İd otomatik değil ben eklicem
             return new SuccessResult(Messages.TuzelMusteriAdded);
         }
 
-        private IResult CheckIfTuzelMusteriNoExists(string vergiNo)
+        private IResult CheckIfTuzelMusteriNoExists(int id, string vergiNo)
         {
-            var result = _tuzelMusteriDal.GetList(p => p.VergiNo == vergiNo).Any();
+            var result = _tuzelMusteriDal.GetList(p => p.Id == id && p.VergiNo == vergiNo).Any();
             if (result)
-            {//Eğer girilen vergi numarası sistemde varsa
-                return new ErrorResult(Messages.MusteriNameAlreadyExists);
+            {//Eğer girilen vergi numarası ve id sistemde varsa
+                return new ErrorResult(Messages.TuzelMusteriNameAlreadyExists);
             }
 
             return new SuccessResult();
         }
 
 
-        [SecuredOperation("Admin")]
+      //  [SecuredOperation("Admin")]
         [CacheRemoveAspect("ITuzelMusteriService.Get")]
         public IResult Delete(TuzelMusteriler tuzelMusteri)
         {

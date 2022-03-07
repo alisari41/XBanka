@@ -13,7 +13,8 @@ namespace Core.DataAccess
         T Get(Expression<Func<T, bool>> filter);
         T Get(int id);
         IList<T> GetList(Expression<Func<T, bool>> filter = null);//Filter (fitre gönderilmesse hepsini listele)
-        void Add(T entity);//Gönderdiğim T'yi veri tabanına ekleyecek
+        void Add(T entity);//Eğer id otomatik atanıyorsa bunu
+        void AddRange(T entity);//İd'i biz giriceksek bunu
         void Update(T entity);
         void Delete(T entity);
     }

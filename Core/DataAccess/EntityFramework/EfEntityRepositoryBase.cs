@@ -23,6 +23,11 @@ namespace Core.DataAccess.EntityFramework
             }
         }
 
+        public void AddRange(TEntity entity)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Delete(TEntity entity)
         {
             using (var context = new TContext())

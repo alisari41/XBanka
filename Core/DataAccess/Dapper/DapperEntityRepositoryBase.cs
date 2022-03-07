@@ -36,7 +36,7 @@ namespace Core.DataAccess.Dapper
 
         private IEnumerable<PropertyInfo> GetProperties => typeof(TEntity).GetProperties();
 
-       
+
 
         public TEntity Get(Expression<Func<TEntity, bool>> filter)
         {
@@ -56,17 +56,7 @@ namespace Core.DataAccess.Dapper
             }
         }
 
-        //public T Get(int id)
-        //{
-        //    _tableName = typeof(T).Name;
-        //    using (var connection = CreateConnection())
-        //    {
-        //        var result = connection.QuerySingleOrDefault<T>($"SELECT * FROM {_tableName} WHERE id=@id", new { id = id });
-        //        if (result == null)
-        //            return null;
-        //        return result;
-        //    }
-        //}
+
 
         public IList<TEntity> GetList(Expression<Func<TEntity, bool>> filter = null)
         {
@@ -79,17 +69,7 @@ namespace Core.DataAccess.Dapper
                     : connection.Select(filter).ToList();
             }
         }
-        //public IEnumerable<T> GetList(Expression<Func<T, bool>> filter = null)
-        //{
-        //    _tableName = typeof(T).Name;
-        //    using (var connection = CreateConnection())
-        //    {
-        //        DommelMapper.SetTableNameResolver(new CustomTableNameResolver());
-        //        return filter == null
-        //            ? connection.Query<T>($"SELECT * FROM {_tableName}")
-        //            : connection.Select(filter);
-        //    }
-        //}
+
 
         public void Add(TEntity entity)
         {
@@ -100,17 +80,32 @@ namespace Core.DataAccess.Dapper
                 connection.ExecuteScalar<int>(insertQuery, entity);
             }
         }
+        public void AddRange(TEntity entity)
+        {
+            _tableName = typeof(TEntity).Name;
+            var query = GenerateInsertQuery();
+            using (var connection = CreateConnection())
+            {
+                connection.Execute(query, entity);
+            }
+        }
+        private string GenerateInsertQuery()
+        {
+            var insertQuery = new StringBuilder($"INSERT INTO {_tableName} ");
+            insertQuery.Append("(");
+            var properties = GenerateListIdOfProperties(GetProperties);
+            properties.ForEach(prop => { insertQuery.Append($"[{prop}],"); });
+            insertQuery
+                .Remove(insertQuery.Length - 1, 1)
+                .Append(") VALUES (");
+            properties.ForEach(prop => { insertQuery.Append($"@{prop},"); });
+            insertQuery
+                .Remove(insertQuery.Length - 1, 1)
+                .Append(")");
+            return insertQuery.ToString();
+        }
 
 
-        //public int Insert(T t)
-        //{
-        //    _tableName = typeof(T).Name;
-        //    var insertQuery = GenerateInsertQuery_ScopeIdentity();
-        //    using (var connection = CreateConnection())
-        //    {
-        //        return connection.ExecuteScalar<int>(insertQuery, t);
-        //    }
-        //}
         public void Update(TEntity entity)
         {
 
@@ -122,15 +117,7 @@ namespace Core.DataAccess.Dapper
             }
         }
 
-        //public int Update(T t)
-        //{
-        //    _tableName = typeof(T).Name;
-        //    var updateQuery = GenerateUpdateQuery();
-        //    using (var connection = CreateConnection())
-        //    {
-        //        return connection.Execute(updateQuery, t);
-        //    }
-        //}
+
         private string GenerateUpdateQuery()
         {
             var updateQuery = new StringBuilder($"UPDATE {_tableName} SET ");
@@ -146,27 +133,11 @@ namespace Core.DataAccess.Dapper
             updateQuery.Append($" WHERE Id=@Id");
             return updateQuery.ToString();
         }
-        //private string GenerateUpdateQuery()
-        //{
-        //    var updateQuery = new StringBuilder($"UPDATE {_tableName} SET ");
-        //    var properties = GenerateListOfProperties(GetProperties);
-        //    properties.ForEach(property =>
-        //    {
-        //        if (!property.Equals("id"))
-        //        {
-        //            updateQuery.Append($"{property}=@{property},");
-        //        }
-        //    });
-        //    updateQuery.Remove(updateQuery.Length - 1, 1);
-        //    updateQuery.Append(" WHERE id=@id");
-        //    return updateQuery.ToString();
-        //}
-
 
 
         public void Delete(TEntity entity)
         {
-           
+
             _tableName = typeof(TEntity).Name;
             var deleteQuery = GenerateDeleteQuery();
             using (var connection = CreateConnection())
@@ -183,30 +154,27 @@ namespace Core.DataAccess.Dapper
             {
                 if (!property.Equals("Id"))
                 {
-                  //  deleteQuery.Append($"{property}=@{property},");
+                    //  deleteQuery.Append($"{property}=@{property},");
                 }
             });
             deleteQuery.Remove(deleteQuery.Length - 1, 1);
             deleteQuery.Append(" WHERE Id=@Id");
             return deleteQuery.ToString();
         }
-        //public int Delete(int id, bool? realDelete = null)
-        //{
-        //    _tableName = typeof(T).Name;
-        //    using (var connection = CreateConnection())
-        //    {
-        //        if (realDelete.HasValue && realDelete.Value)
-        //            return connection.Execute($"DELETE FROM {_tableName} WHERE id = @id", new { id = id });
-        //        else
-        //            return connection.Execute($"UPDATE {_tableName} SET silindi = 1 WHERE id = @id", new { id = id });
-        //    }
-        //}
+
         private static List<string> GenerateListOfProperties(IEnumerable<PropertyInfo> listOfProperties)
         {
             return (from prop in listOfProperties
                     let attributes = prop.GetCustomAttributes(typeof(DescriptionAttribute), false)
-                    where (attributes.Length <= 0 || (attributes[0] as DescriptionAttribute)?.Description != "ignore") && prop.Name != "id"
+                    where (attributes.Length <= 0 || (attributes[0] as DescriptionAttribute)?.Description != "ignore") && prop.Name != "Id"
                     select prop.Name).ToList();
+        }
+        private static List<string> GenerateListIdOfProperties(IEnumerable<PropertyInfo> listOfProperties)
+        {//Id elle girilmek istenirse
+            return (from prop in listOfProperties
+                let attributes = prop.GetCustomAttributes(typeof(DescriptionAttribute), false)
+                where (attributes.Length <= 0 || (attributes[0] as DescriptionAttribute)?.Description != "ignore") 
+                select prop.Name).ToList();
         }
 
         private string GenerateInsertQuery_ScopeIdentity()

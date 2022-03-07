@@ -27,6 +27,14 @@ namespace Business.Constants
         public static string TuzelMusteriDeleted = "Tüzel Müşteri bilgileri başarıyla silindi.";
         public static string TuzelMusteriUpdated = "Tüzel Müşteri bilgileri başarıyla güncelleştirildi.";
 
+        public static string GercekMusteriAdded = "Gerçek Müşteri başarıyla eklendi.";
+        public static string GercekMusteriDeleted = "Gerçek Müşteri bilgileri başarıyla silindi.";
+        public static string GercekMusteriUpdated = "Gerçek Müşteri bilgileri başarıyla güncelleştirildi.";
+
+        public static string TicariFaaliyetAdded = "Ticari Faaliyet başarıyla eklendi.";
+        public static string TicariFaaliyetDeleted = "Ticari Faaliyet bilgileri başarıyla silindi.";
+        public static string TicariFaaliyetUpdated = "Ticari Faaliyet bilgileri başarıyla güncelleştirildi.";
+
 
 
         public static string UserNotFound = "Kullanıcı bulunamadı.";
@@ -40,7 +48,8 @@ namespace Business.Constants
         public static string AuthorizationDenied = "Yetkiniz yok.";
         public static string MusteriNameAlreadyExists = "Müşteri numarası zaten mevcut.";
         public static string KanalNameAlreadyExists = "Kanal adı zaten mevcut.";
-
-
+        public static string TuzelMusteriNameAlreadyExists = "Tüzel Müşteri zaten mevcut.";
+        public static string GercekMusteriNameAlreadyExists = "Gerçek Müşteri zaten mevcut.";
+        public static string TicariFaaliyetNameAlreadyExists = "Gerçek Müşterinin Ticari Faaliyeti zaten mevcut.";
     }
 }

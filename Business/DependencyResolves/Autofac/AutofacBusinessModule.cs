@@ -29,6 +29,11 @@ namespace Business.DependencyResolves.Autofac
             builder.RegisterType<TuzelMusteriManager>().As<ITuzelMusteriService>();
             builder.RegisterType<DapperTuzelMusteriDal>().As<ITuzelMusteriDal>();
 
+            builder.RegisterType<GercekMusteriManager>().As<IGercekMusteriService>();
+            builder.RegisterType<DapperGercekMusteriDal>().As<IGercekMusteriDal>();
+
+            builder.RegisterType<TicariFaliyetManager>().As<ITicariFaliyetService>();
+            builder.RegisterType<DapperTicariFaliyetDal>().As<ITicariFaleyetDal>();
 
 
 

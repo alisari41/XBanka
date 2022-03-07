@@ -12,7 +12,7 @@ namespace Business.Abstract
     {
         IDataResult<TuzelMusteriler> GetById(int tuzelMusteriId);//Data başarlımı oldu başarısız mı onlarada bakıcam IDataResult ile
         IDataResult<List<TuzelMusteriler>> GetList();
-        IResult Add(TuzelMusteriler tuzelMusteri);
+        IResult AddRange(TuzelMusteriler tuzelMusteri);
         IResult Delete(TuzelMusteriler tuzelMusteri);
         IResult Update(TuzelMusteriler tuzelMusteri);
 

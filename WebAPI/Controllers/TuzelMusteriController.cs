@@ -39,7 +39,7 @@ namespace WebAPI.Controllers
         [HttpPost("add")]
         public IActionResult Add(TuzelMusteriler tuzelMusteri)
         {
-            var result = _tuzelMusteriService.Add(tuzelMusteri);
+            var result = _tuzelMusteriService.AddRange(tuzelMusteri);
             return _calismaDurumlari.CalismaDurumuCRUD(result);
         }
 

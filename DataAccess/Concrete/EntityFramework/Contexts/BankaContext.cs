@@ -13,7 +13,7 @@ namespace DataAccess.Concrete.EntityFramework.Contexts
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(connectionString: @"Data Source=.\sqlexpress;Initial Catalog=Banka;Integrated Security=True");
+            optionsBuilder.UseSqlServer(connectionString: @"Server=tcp:alisqlserver41.database.windows.net,1433;Initial Catalog=Banka;Persist Security Info=False;User ID=alisari41;Password=ali1234*;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
         }
 
         public DbSet<Musteri> Musteriler { get; set; }

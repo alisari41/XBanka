@@ -21,7 +21,7 @@ namespace Core.DataAccess.Dapper
         where TEntity : class, IEntity, new()
     {
         string _tableName;
-        readonly string _connectionString = @"Data Source =.\sqlexpress;Initial Catalog = Banka; Integrated Security = True";
+        readonly string _connectionString = @"Server=tcp:alisqlserver41.database.windows.net,1433;Initial Catalog=Banka;Persist Security Info=False;User ID=alisari41;Password=ali1234*;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         private SqlConnection SqlConnection()
         {
             return new SqlConnection(_connectionString);
